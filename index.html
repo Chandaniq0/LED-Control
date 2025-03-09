@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LED Control</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>LED Control</h1>
+        <form id="ledForm">
+            <label for="ipAddress">Enter IP Address:</label>
+            <input type="text" id="ipAddress" name="ipAddress" placeholder="192.168.1.1" required>
+            <div class="button-container">
+                <button type="button" id="onButton">ON</button>
+                <button type="button" id="offButton">OFF</button>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('onButton').addEventListener('click', function() {
+            const ip = document.getElementById('ipAddress').value;
+            if (ip) {                
+                fetch(`http://${ip}/ledon`)
+                    .catch(error => console.error('Error:', error));
+                alert('LED turned ON'); 
+            } else {
+                alert('Please enter a valid IP address');
+            }
+        });
+
+        document.getElementById('offButton').addEventListener('click', function() {
+            const ip = document.getElementById('ipAddress').value;
+            if (ip) {                
+                fetch(`http://${ip}/ledoff`)
+                    .catch(error => console.error('Error:', error));
+                alert('LED turned OFF'); 
+            } else {
+                alert('Please enter a valid IP address');
+            }
+        });
+    </script>
+</body>
+</html>
