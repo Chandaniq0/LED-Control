@@ -23,7 +23,7 @@
         document.getElementById('onButton').addEventListener('click', function() {
             const ip = document.getElementById('ipAddress').value;
             if (ip) {                
-                fetch(`http://${ip}/ledon`)
+                fetch(`${ip}/ledon`)
                     .catch(error => console.error('Error:', error));
                 alert('LED turned ON'); 
             } else {
@@ -34,7 +34,7 @@
         document.getElementById('offButton').addEventListener('click', function() {
             const ip = document.getElementById('ipAddress').value;
             if (ip) {                
-                fetch(`http://${ip}/ledoff`)
+                fetch(`${ip}/ledoff`)
                     .catch(error => console.error('Error:', error));
                 alert('LED turned OFF'); 
             } else {
