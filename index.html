@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LED Control</title>
     <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 </head>
 <body>
     <div class="container">
@@ -22,10 +23,9 @@
     <script>
         document.getElementById('onButton').addEventListener('click', function() {
             const ip = document.getElementById('ipAddress').value;
-            if (ip) { 
-                let url = `${ip}/ledon`;
-                console.log(url);
-                fetch(url)
+            if (ip) {     
+                const url = `${ip}/ledon`;
+                axios.get(url)               
                     .catch(error => console.error('Error:', error));
                 alert('LED turned ON'); 
             } else {
@@ -35,9 +35,9 @@
 
         document.getElementById('offButton').addEventListener('click', function() {
             const ip = document.getElementById('ipAddress').value;
-            if (ip) {
-                let url = `${ip}/ledon`;
-                fetch(url)
+            if (ip) {                
+                const url = `${ip}/ledoff`;
+                axios.get(url)               
                     .catch(error => console.error('Error:', error));
                 alert('LED turned OFF'); 
             } else {
