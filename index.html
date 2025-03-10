@@ -23,8 +23,8 @@
     <script>
         document.getElementById('onButton').addEventListener('click', function() {
             const ip = document.getElementById('ipAddress').value;
-            if (ip) {     
-                const url = `${ip}/ledon`;
+            if (ip) {                
+                const url = `http://${ip}/ledon`; 
                 axios.get(url)               
                     .catch(error => console.error('Error:', error));
                 alert('LED turned ON'); 
@@ -32,11 +32,11 @@
                 alert('Please enter a valid IP address');
             }
         });
-
+    
         document.getElementById('offButton').addEventListener('click', function() {
             const ip = document.getElementById('ipAddress').value;
-            if (ip) {                
-                const url = `${ip}/ledoff`;
+            if (ip) {
+                const url = `http://${ip}/ledoff`; 
                 axios.get(url)               
                     .catch(error => console.error('Error:', error));
                 alert('LED turned OFF'); 
